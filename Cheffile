@@ -3,7 +3,7 @@
 
 site 'https://supermarket.getchef.com/api/v1'
 
-  cookbook 'postgresql-cluster', '~> 0.3.0'
+#  cookbook 'postgresql-cluster', '~> 0.3.0'
 # cookbook 'chef-client'
 
 # cookbook 'apache2', '>= 1.0.0'
