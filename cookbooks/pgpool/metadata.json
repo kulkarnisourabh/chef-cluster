@@ -1,0 +1,29 @@
+{
+  "name": "pgpool",
+  "version": "0.2.0",
+  "description": "Installs/Configures pgpool",
+  "long_description": "pgpool Cookbook\n========================\nInstalls and configures PGPool\n\nAttributes\n----------\n#### pgpool::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['pgpool']['pgconf']['listen_address']</tt></td>\n    <td>String</td>\n    <td>listen address</td>\n    <td><tt>localhost</tt></td>\n  </tr>\n  <tr>\n    <td><tt>['pgpool']['pgconf']['port']</tt></td>\n    <td>String</td>\n    <td>bind port</td>\n    <td><tt>9999</tt></td>\n  </tr>\n  <tr>\n    <td><tt>['pgpool']['pgconf']['logdir']</tt></td>\n    <td>String</td>\n    <td>log directory</td>\n    <td><tt>/var/log/pgpool</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### pgpool::default\nJust include `pgpool` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[pgpool]\"\n  ]\n}\n```\n\nContributing\n------------\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write your change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\n- Author:: Jens Jorritsma(jens.jorritsma@rackspace.com)\n",
+  "maintainer": "Jens Jorritsma",
+  "maintainer_email": "jens.jorritsma@gamil.com",
+  "license": "Apache 2",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  }
+}

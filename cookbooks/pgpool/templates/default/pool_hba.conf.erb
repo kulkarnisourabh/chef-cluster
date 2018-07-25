@@ -1,0 +1,20 @@
+# Put your actual configuration here
+# ----------------------------------
+#
+# If you want to allow non-local connections, you need to add more
+# "host" records. In that case you will also need to make pgpool listen
+# on a non-local interface via the listen_addresses configuration parameter.
+#
+
+# TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+
+<% node['pgpool']['pg_hba']['auth'].each do |access| -%>
+  <% if access[:comment] %>
+    <%= access[:comment] %>
+  <% end %>
+  <% if access[:addr] %>
+    <%= access[:type].ljust(7) %> <%= access[:db].ljust(15) %> <%= access[:user].ljust(15) %> <%= access[:addr].ljust(23) %> <%= access[:method] %>
+  <% else %>
+    <%= access[:type].ljust(7) %> <%= access[:db].ljust(15) %> <%= access[:user].ljust(15) %> <%= access[:method] %>
+  <% end %>
+<% end %>

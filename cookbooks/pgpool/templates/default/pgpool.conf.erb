@@ -1,0 +1,13 @@
+<% node['pgpool']['pgconf'].each do |k, v| -%>
+  <% unless v.to_s.empty? -%>
+    <% if v.is_a?(String) -%>
+<%= k.ljust(25) %> = '<%= v %>'
+    <% elsif v.is_a?(Integer) -%>
+<%= k.ljust(25) %> = <%= v %>
+    <% elsif not v -%>
+<%= k.ljust(25) %> = off
+    <% else -%>
+<%= k.ljust(25) %> = on
+    <% end -%>
+  <% end -%>
+<% end -%>
