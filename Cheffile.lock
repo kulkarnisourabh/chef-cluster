@@ -1,0 +1,31 @@
+SITE
+  remote: https://supermarket.getchef.com/api/v1
+  specs:
+    build-essential (8.1.1)
+      mingw (>= 1.1)
+      seven_zip (>= 0.0.0)
+    chef-provisioning-aws-helper (0.2.0)
+      lvm (>= 0.0.0)
+    chef-provisioning-vagrant-helper (0.2.0)
+    hostsfile (3.0.1)
+    lvm (4.2.0)
+    mingw (2.1.0)
+      seven_zip (>= 0.0.0)
+    openssl (8.2.0)
+    pgpool (0.2.0)
+    postgresql (7.1.0)
+      build-essential (>= 2.0.0)
+      openssl (>= 4.0)
+    postgresql-cluster (0.3.0)
+      chef-provisioning-aws-helper (>= 0.0.0)
+      chef-provisioning-vagrant-helper (>= 0.0.0)
+      hostsfile (>= 0.0.0)
+      pgpool (>= 0.0.0)
+      postgresql (>= 0.0.0)
+    seven_zip (3.0.0)
+      windows (>= 0.0.0)
+    windows (5.0.0)
+
+DEPENDENCIES
+  postgresql-cluster (~> 0.3.0)
+
