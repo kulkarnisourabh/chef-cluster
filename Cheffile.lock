@@ -7,13 +7,17 @@ SITE
     mingw (2.1.0)
       seven_zip (>= 0.0.0)
     openssl (8.2.0)
-    postgresql (7.1.0)
-      build-essential (>= 2.0.0)
-      openssl (>= 4.0)
     seven_zip (3.0.0)
       windows (>= 0.0.0)
     windows (5.0.0)
 
+PATH
+  remote: site-cookbooks/postgresql
+  specs:
+    postgresql (7.1.0)
+      build-essential (>= 2.0.0)
+      openssl (>= 4.0)
+
 DEPENDENCIES
-  postgresql (~> 7.1.0)
+  postgresql (>= 0)
 
