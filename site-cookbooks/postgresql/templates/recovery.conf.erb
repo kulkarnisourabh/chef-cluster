@@ -1,0 +1,7 @@
+# Add this file under /var/lib/postgresql/9.5/main/
+# Change host address to master servers private IP
+
+standby_mode = 'on'
+primary_conninfo = 'host=<master_private_IP> port=5432 user=<replication_user> password=<password> application_name=<application_name_from_conf_file>'
+restore_command = 'cp /var/lib/postgresql/9.5/main/archive/%f %p'
+trigger_file = '/tmp/postgresql.trigger.5432'
