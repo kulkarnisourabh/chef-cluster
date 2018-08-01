@@ -71,3 +71,109 @@ When this is done. Run the following command to start the full installation of y
   }
 }
 ```
+
+# Working with replication nodes and slaves
+
+If you want to deploy postgres slave node when you have pgpool setup running ahead you can do following changes and deploy code,
+
+- Create a new slave server machine and get IP (use private IP's for any kind of cluster setups)
+
+# On Master Node Server
+
+- In master node server change the ufw rules and add rule to allow <new_slave_node> server IP to postgres running port
+`sudo ufw allow from <new_slave_ip> to any port 5432`
+
+- change pg_hba.conf and add access rule for your replication user,
+```
+TYPE      DB             USER               SLAVE IP              METHOD      
+host    replication     replication     <new_slave_ip>/32         trust
+```
+
+# Deployment Steps (your workstation)
+
+- On your workstation just prepare the recepie as follows
+` $ bundle exec knife solo prepare <user>@<new_slave_ip>`
+
+- Go to your node and copy the node contents from above sample node containts and chnge the relevent configs to new slave node. If you dont know how postgres master slave replication then follow this tutorial link: https://www.howtoforge.com/tutorial/how-to-set-up-master-slave-replication-for-postgresql-96-on-ubuntu-1604/
+
+- Change the `recovery.conf.erb` as follows,
+
+`./site-cookbook/postgresql/templets/recovery.conf.erb`
+```
+standby_mode = 'on'
+primary_conninfo = 'host=<master_node_ip> port=5432 user=<replication_user> password=<user_password> application_name=<slave_application_name>'
+restore_command = 'cp /var/lib/postgresql/9.5/main/archive/%f %p'
+trigger_file = '/tmp/postgresql.trigger.5432'
+```
+
+- Run the installation command `$ bundle exec knife solo cook <your user>@<your host/ip>`
+
+# On new Slave Node Server
+
+- Once installation is completed successfully ssh to your new slave node server.
+
+- Add the master server entry in `pg_hba.conf`
+
+```
+TYPE      DB             USER               SLAVE IP              METHOD      
+host    replication     replication     <master_ip>/32         trust
+```
+- stop the postgres server,
+
+`$ sudo systemctl stop postgresql`
+
+- Dont forget alwys use trust method for any kind of pgpool configuration in `pg_hba.conf`.
+
+- swith to `/var/lib/postgresql.9.5/main` and run the following command to copy the main directory from the Master Node Server to the Slave Node Server with pg_basebackup command, we will use replication user to perform this data copy.
+```
+$ pg_basebackup -h <Master_node_ip> -U <replication_user> -D /var/lib/postgresql/9.5/main -P --xlog
+```
+- After finish copy, move the `recovery.conf` as, 
+
+`$ mv /var/lib/postgresql/9.5/recovery.conf /var/lib/postgresql/9.5/main/recovery.conf`
+
+- Start the postgresql server,
+
+`$ sudo systemctl start postgresql`
+
+- Test the replication and check all master data is replicated to new slave.
+
+
+# PGPOOL config
+
+If your replication is running behind `pgpool` you have to take care of few things as follows,
+
+- Check the pgpool backend node status
+
+`$ psql -U <user> --dbname=postgres --host <pgpool_host_ip> -p <pgpool_port> -c "show pool_nodes" `
+
+or you can use pcp commands,
+
+`$ pcp_node_info -h <pgpool_socket_dir> -U user -n <node_id>`
+
+- Go to the `/etc/pgpool2/pgpool.conf` and add config for newly attached new backend slave node,
+
+```
+backend_hostname2 = '<new_slave_ip>'
+backend_port2 = 5432
+backend_weight2 = 1
+backend_data_directory2 = '/data1'
+backend_flag2 = 'ALLOW_TO_FAILOVER'
+```
+under CONNECTIONS in `pgpool.conf`, also you can add and change no of backends, for more information about pgpool and its behaviour visit following link: http://www.pgpool.net/docs/pgpool-II-3.7.5/en/html/
+
+- Restart the pgpool service,
+
+stop
+
+`$ pgpool -m fast stop`
+
+start
+
+`$ pgpool`
+
+- Check the backen node status and attach new node in cluster as follows,
+
+`$ pcp_attach_node -h <pcp_socket_file_path> -U <pcp_uer> -p <pcp_port> -n <node_id>`
+
+### And you are Done.....
