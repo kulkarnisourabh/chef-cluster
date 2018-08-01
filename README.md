@@ -41,7 +41,8 @@ When this is done. Run the following command to start the full installation of y
 `$ bundle exec knife solo cook <your user>@<your host/ip>`
 
 # 3. Sample node
-```{
+```
+{
   "run_list":["role[postgresql]"],
   "automatic": {
     "ipaddress": "<Public IP>"
@@ -68,4 +69,5 @@ When this is done. Run the following command to start the full installation of y
   		"hot_standby" : "on"
   	}
   }
-}```
+}
+```
