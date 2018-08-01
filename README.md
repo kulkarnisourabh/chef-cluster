@@ -12,8 +12,9 @@ This Chef repository aims at beaing easist way to setup postgres master and slav
 The following paragraphs will guide you to set up your own Postgresql master and slave nodes
 
 Clone the repository onto your own workstation. For example in your `~/Code` directory:
-`$ cd ~/Code
-$ git clone git@github.com:kulkarnisourabh/chef-postgres-cluster.git`
+
+`$ cd ~/Code`
+`$ git clone git@github.com:kulkarnisourabh/chef-postgres-cluster.git`
 
 Run Bundle:
 
@@ -28,9 +29,11 @@ Run Librarian install:
 Use the following command to install Chef on your server and prepare it to be installed by these cookbooks:
 
 `$ bundle exec knife solo prepare <your user>@<your host/ip>`
+
 This will create a file
 
 `nodes/<your host/ip>.json`
+
 Now copy the the contents from the nodes/sample_host.json from this repository into this new file. Replace the sample values between < > with the values for your server and applications.
 
 When this is done. Run the following command to start the full installation of your server:
