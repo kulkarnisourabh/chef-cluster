@@ -8,5 +8,6 @@ run_list(
 	"recipe[postgresql::access]", 
 	"recipe[postgresql::client_install]", 
 	"recipe[postgresql::server_install]",
-	"recipe[apt::unattended-upgrades]"
+	"recipe[apt::unattended-upgrades]",
+	"recipe[postgresql::backup_dir]"
 	)    
