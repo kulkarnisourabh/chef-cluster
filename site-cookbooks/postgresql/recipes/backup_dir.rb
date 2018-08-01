@@ -14,6 +14,7 @@ end
     mv main main-back
     mkdir main/
     chmod 700 main/
+    chown -R postgres:postgres main/
     EOH
   end
 
