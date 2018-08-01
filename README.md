@@ -15,10 +15,12 @@ Clone the repository onto your own workstation. For example in your `~/Code` dir
 `$ cd ~/Code
 $ git clone git@github.com:kulkarnisourabh/chef-postgres-cluster.git`
 
-Run Bundle
+Run Bundle:
+
 `$ bundle install`
 
 Run Librarian install:
+
 `$ librarian-chef install`
 
 # 2. Install your server
