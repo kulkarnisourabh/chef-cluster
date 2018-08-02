@@ -134,7 +134,7 @@ $ pg_basebackup -h <Master_node_ip> -U <replication_user> -D /var/lib/postgresql
 
 - Change the directory permissions to user and group as a postgres
 
-`sudo chown -R postgres:postgres /var/lib/postgresql/9.5/main`
+`$ sudo chown -R postgres:postgres /var/lib/postgresql/9.5/main`
 
 - Start the postgresql server,
 
