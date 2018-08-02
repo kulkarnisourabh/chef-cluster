@@ -132,6 +132,10 @@ $ pg_basebackup -h <Master_node_ip> -U <replication_user> -D /var/lib/postgresql
 
 `$ mv /var/lib/postgresql/9.5/recovery.conf /var/lib/postgresql/9.5/main/recovery.conf`
 
+- Change the directory permissions to user and group as a postgres
+
+`sudo chown -R postgres:postgres /var/lib/postgresql/9.5/main`
+
 - Start the postgresql server,
 
 `$ sudo systemctl start postgresql`
