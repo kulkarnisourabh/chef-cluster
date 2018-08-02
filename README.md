@@ -178,6 +178,6 @@ start
 
 - Check the backen node status and attach new node in cluster as follows,
 
-`$ pcp_attach_node -h <pcp_socket_file_path> -U <pcp_uer> -p <pcp_port> -n <node_id>`
+`$ pcp_attach_node -h <pcp_socket_file_path> -U <pcp_user> -p <pcp_port> -n <node_id>`
 
 ### And you are Done.....
