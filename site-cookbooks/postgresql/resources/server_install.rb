@@ -71,28 +71,7 @@ action :create do
     not_if { user_has_password?(new_resource) }
     not_if { new_resource.password.nil? }
   end
-
- # service 'postgresql' do
- #    action [:stop]
- #  end
-
- #  bash 'generate_main_backup' do
- #    user 'postgres'
- #    code <<-EOH
- #    cd /var/lib/postgresql/9.5/
- #    mv main main-back
- #    mkdir main/
- #    chmod 700 main/
- #    EOH
- #  end
-
- #  template '/var/lib/postgresql/9.5/recovery.conf' do
- #    source 'recovery.conf.erb'
- #    owner 'postgres'
- #    group 'postgres'
- #    mode '0600'
- #  end
- end
+end
 
 action_class do
   include PostgresqlCookbook::Helpers
