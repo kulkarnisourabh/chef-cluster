@@ -1,4 +1,7 @@
 # postgresql-cluster cookbook
+
+[![Cookbook Version](https://img.shields.io/cookbook/v/postgresql.svg)](https://supermarket.chef.io/cookbooks/postgresql)
+
 This Chef repository aims at beaing easist way to setup postgres master and slave nodes quickly. Supports current version of postgresql 7.1.0 of chef market. You can always pull latest version of posgresql chef cookbook from https://github.com/sous-chefs/postgresql. Chef postgresql removed all recepies from 7.0 and later versions. Chef postgres also removed installation of server and client using `pg_gem` and started using cli. For more information about postgres upgrades please see https://github.com/sous-chefs/postgresql/blob/master/UPGRADING.md         
 
 # Database
@@ -43,7 +46,7 @@ When this is done. Run the following command to start the full installation of y
 # 3. Sample node
 ```
 {
-  "run_list":["role[postgresql]"],
+  "run_list":["role[postgresql_<master/slave>]"],
   "automatic": {
     "ipaddress": "<Public IP>"
   },
@@ -57,7 +60,7 @@ When this is done. Run the following command to start the full installation of y
   	 "pg_hba": [
       { "type": "host",  "db": "all", "user": "all",      		"addr": "127.0.0.1/32",   	"method": "md5" },
       { "type": "host",  "db": "all", "user": "all",      		"addr": "::1/128",        	"method": "md5" },
-      { "type": "host",  "db": "all", "user": "replication",    "addr": "<IP>/32", "method": "md5" }
+      { "type": "host",  "db": "all", "user": "replication",    "addr": "<IP>/32", "method": "trust" }
     ],
   	"config" : {
   		"listen_addresses" : "*,<IP>",
@@ -176,8 +179,8 @@ start
 
 `$ pgpool`
 
-- Check the backen node status and attach new node in cluster as follows,
+- Check the backend node status and attach new node in cluster as follows,
 
-`$ pcp_attach_node -h <pcp_socket_file_path> -U <pcp_uer> -p <pcp_port> -n <node_id>`
+`$ pcp_attach_node -h <pcp_socket_file_path> -U <pcp_user> -p <pcp_port> -n <node_id>`
 
 ### And you are Done.....
