@@ -46,7 +46,7 @@ When this is done. Run the following command to start the full installation of y
 # 3. Sample node
 ```
 {
-  "run_list":["role[postgresql]"],
+  "run_list":["role[postgresql_<master/slave>]"],
   "automatic": {
     "ipaddress": "<Public IP>"
   },
@@ -60,7 +60,7 @@ When this is done. Run the following command to start the full installation of y
   	 "pg_hba": [
       { "type": "host",  "db": "all", "user": "all",      		"addr": "127.0.0.1/32",   	"method": "md5" },
       { "type": "host",  "db": "all", "user": "all",      		"addr": "::1/128",        	"method": "md5" },
-      { "type": "host",  "db": "all", "user": "replication",    "addr": "<IP>/32", "method": "md5" }
+      { "type": "host",  "db": "all", "user": "replication",    "addr": "<IP>/32", "method": "trust" }
     ],
   	"config" : {
   		"listen_addresses" : "*,<IP>",
