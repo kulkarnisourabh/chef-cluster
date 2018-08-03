@@ -46,7 +46,7 @@ When this is done. Run the following command to start the full installation of y
 # 3. Sample node
 ```
 {
-  "run_list":["role[postgresql]"],
+  "run_list":["role[postgresql_<master/slave>]"],
   "automatic": {
     "ipaddress": "<Public IP>"
   },
