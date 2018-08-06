@@ -9,9 +9,8 @@ cookbook 'ssh-private-keys', '~> 2.0.0'
 
 
 cookbook "postgresql", path: "site-cookbooks/postgresql"
-#cookbook "ssh_deploy_keys", path: "site-cookbooks/ssh_deploy_keys"
 cookbook "sysadmins", path: "site-cookbooks/sysadmins"
-# cookbook 'apache2', '>= 1.0.0'
+
 
 # cookbook 'rvm',
 #   :git => 'https://github.com/fnichol/chef-rvm'
