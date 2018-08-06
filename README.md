@@ -2,7 +2,7 @@
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/postgresql.svg)](https://supermarket.chef.io/cookbooks/postgresql)
 
-This Chef repository aims at beaing easist way to setup postgres master and slave nodes quickly. Supports current version of postgresql 7.1.0 of chef market. You can always pull latest version of posgresql chef cookbook from https://github.com/sous-chefs/postgresql. Chef postgresql removed all recepies from 7.0 and later versions. Chef postgres also removed installation of server and client using `pg_gem` and started using cli. For more information about postgres upgrades please see https://github.com/sous-chefs/postgresql/blob/master/UPGRADING.md         
+This Chef repository aims at being easist way to setup postgres master and slave nodes quickly. Supports current version of postgresql 7.1.0 of chef market. You can always pull latest version of posgresql chef cookbook from https://github.com/sous-chefs/postgresql. Chef postgresql removed all recepies from 7.0 and later versions. Chef postgres also removed installation of server and client using `pg_gem` and started using cli. For more information about postgres upgrades please see https://github.com/sous-chefs/postgresql/blob/master/UPGRADING.md         
 
 # Database
 - postgresql 9.5
