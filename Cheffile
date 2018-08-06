@@ -5,10 +5,11 @@ site 'https://supermarket.getchef.com/api/v1'
 
 cookbook 'apt', '~> 7.0.0'
 cookbook 'sudo', '~> 5.4.0'
+cookbook 'ssh-private-keys', '~> 2.0.0'
 
 
 cookbook "postgresql", path: "site-cookbooks/postgresql"
-cookbook "ssh_deploy_keys", path: "site-cookbooks/ssh_deploy_keys"
+#cookbook "ssh_deploy_keys", path: "site-cookbooks/ssh_deploy_keys"
 cookbook "sysadmins", path: "site-cookbooks/sysadmins"
 # cookbook 'apache2', '>= 1.0.0'
 
